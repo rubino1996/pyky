@@ -105,18 +105,34 @@ def poly_from_bytes(a):
         r[2 * i + 1] = cast_to_short((((a[3 * i + 1] & 0xFF) >> 4) | ((a[3 * i + 2] & 0xFF) << 4)) & 0xFFF)
     return r
 
+# def poly_from_data(msg):
+#     """
+#     convert a 32-byte message to a polynomial
+#     :param msg: byte array
+#     :return: short array
+#     """
+#     r = [ 0 for x in range(0, KYBER_N)]
+#     mask = 0
+#     for i in range(0, KYBER_N // 8):
+#         for j in range(0,8):
+#             mask = cast_to_short (-1 * cast_to_short (((msg[i] & 0xFF) >> j) & 1))
+#             r[8 * i + j] = cast_to_short (mask & cast_to_short ((KYBER_Q + 1) // 2))
+#     return r
+
+#This is the only modification in the poly file
 def poly_from_data(msg):
     """
-    convert a 32-byte message to a polynomial
+    Convert a message to a polynomial.
     :param msg: byte array
     :return: short array
     """
-    r = [ 0 for x in range(0, KYBER_N)]
-    mask = 0
-    for i in range(0, KYBER_N // 8):
-        for j in range(0,8):
-            mask = cast_to_short (-1 * cast_to_short (((msg[i] & 0xFF) >> j) & 1))
-            r[8 * i + j] = cast_to_short (mask & cast_to_short ((KYBER_Q + 1) // 2))
+    r = [0] * KYBER_N
+    for i in range(min(len(msg), KYBER_N // 8)):
+        for j in range(8):
+            mask = cast_to_short(-1 *
+                                 cast_to_short(((msg[i] & 0xFF) >> j) & 1))
+            r[8 * i + j] = cast_to_short(mask &
+                                         cast_to_short((KYBER_Q + 1) // 2))
     return r
 
 def poly_to_msg(a):
