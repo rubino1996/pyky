@@ -103,4 +103,5 @@ def decrypt(packed_ciphertext, private_key, params_k):
     mp = poly_sub(v, mp)
     mp = poly_reduce(mp)
     ret = poly_to_msg(mp)
-    return ret
+    # return ret
+    return bytes(ret) # This is the only modification here needed
