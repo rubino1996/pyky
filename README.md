@@ -21,29 +21,5 @@ This repository is not intended for production use, as it is not hardened agains
 ## Installation and Setup
 
 1. **Clone this repository**:
-    ```bash
-    git clone https://github.com/yourusername/yourrepository.git
-    cd yourrepository
-    ```
+  (https://github.com/rubino1996/pyky.git)
 
-2. **Install dependencies**:
-    Ensure you have Python installed along with any necessary dependencies. You can use `pip` to install the `Crypto` package if it’s not already installed:
-    ```bash
-    pip install pycryptodome
-    ```
-
-## Usage
-
-The main script, `test_kyber.py`, includes functions for reading a text file, encrypting it in chunks using the Kyber public key, and decrypting it with the private key. Here’s an example usage:
-
-1. **Generate Keys**:
-    ```python
-    from cpake import generate_kyber_keys
-    private_key, public_key = generate_kyber_keys(params_k=2)
-    ```
-
-2. **Encrypt a Text File**:
-    Use the `encrypt_message_in_chunks` function to encrypt a text message or file.
-
-3. **Decrypt the Encrypted File**:
-    Use the `decrypt_message_chunks` function to decrypt the previously encrypted file.
