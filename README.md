@@ -1,27 +1,49 @@
-# Crystals-Kyber in Python
+# Crystals-Kyber in Python - Enhanced for Text File Encryption and Decryption
 
-## About
+## Overview
 
-- just a toy implementation to better understand the algorithm
-- all three 512, 768 and 1024 sec levels. 
-- ported from the [reference](https://github.com/pq-crystals/kyber) and the [Go Implementation](https://github.com/kudelskisecurity/crystals-go), so not the fanciest Python code
-- not hardened against (timing/other) side channel attacks
-- test coverage is poor, use at your own risk
+This repository is a modified version of the [original Crystals-Kyber Python implementation](https://github.com/asdfjkl/pyky), intended to support encryption and decryption of text files using the Kyber algorithm. These modifications include updates to existing files and a new script, `test_kyber.py`, specifically designed for text file processing.
 
-## How To Use
+### Original Repository
 
-Just take a look at `ccakem.py`. Functions 
+The original repository was a toy implementation of Crystals-Kyber in Python, ported from the [official reference](https://github.com/pq-crystals/kyber) . It was intended for educational purposes and is not hardened against timing or other side-channel attacks.
 
-- `kem_keygenXXX()`, 
-- `kem_encapsXXX(pubkey, seed=None)` and 
-- `kem_decapsXXX(private_key, ciphertext)` 
+### Modifications in This Repository
 
-correspond directly to the [spec](https://pq-crystals.org/). For `kem_encaps` you can optionally provide a custom `seed` which is useful for debugging.
+- **Changes to `cpake.py`**: Enhanced to integrate with the new text file encryption functionalities.
+- **Changes to `poly.py`**: Adjusted polynomial handling for compatibility with the `test_kyber.py` script.
+- **New File - `test_kyber.py`**: This script allows users to encrypt and decrypt text files using Kyber keys, specifically developed to handle chunked file encryption.
 
-Typical kem, e.g. 512 sec level, would be
+## Security Note
 
-````
-priv, pub = kem_keygen512()
-secret1, cipher = kem_encaps512(pub)
-secret2 = kem_decaps512(priv, cipher)
-````
+This repository is not intended for production use, as it is not hardened against side-channel attacks. It is provided for learning and experimental purposes.
+
+## Installation and Setup
+
+1. **Clone this repository**:
+    ```bash
+    git clone https://github.com/yourusername/yourrepository.git
+    cd yourrepository
+    ```
+
+2. **Install dependencies**:
+    Ensure you have Python installed along with any necessary dependencies. You can use `pip` to install the `Crypto` package if it’s not already installed:
+    ```bash
+    pip install pycryptodome
+    ```
+
+## Usage
+
+The main script, `test_kyber.py`, includes functions for reading a text file, encrypting it in chunks using the Kyber public key, and decrypting it with the private key. Here’s an example usage:
+
+1. **Generate Keys**:
+    ```python
+    from cpake import generate_kyber_keys
+    private_key, public_key = generate_kyber_keys(params_k=2)
+    ```
+
+2. **Encrypt a Text File**:
+    Use the `encrypt_message_in_chunks` function to encrypt a text message or file.
+
+3. **Decrypt the Encrypted File**:
+    Use the `decrypt_message_chunks` function to decrypt the previously encrypted file.
