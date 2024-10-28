@@ -10,13 +10,10 @@ The original repository was a toy implementation of Crystals-Kyber in Python, po
 
 ### Modifications in This Repository
 
-- **Changes to `cpake.py`**: Enhanced to integrate with the new text file encryption functionalities.
+- **Changes to `cpake.py`**: changed the return to "Bytes" from the decrypt function
 - **Changes to `poly.py`**: Adjusted polynomial handling for compatibility with the `test_kyber.py` script.
 - **New File - `test_kyber.py`**: This script allows users to encrypt and decrypt text files using Kyber keys, specifically developed to handle chunked file encryption.
 
-## Security Note
-
-This repository is not intended for production use, as it is not hardened against side-channel attacks. It is provided for learning and experimental purposes.
 
 ## Installation and Setup
 
