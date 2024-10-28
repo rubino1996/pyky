@@ -104,4 +104,4 @@ def decrypt(packed_ciphertext, private_key, params_k):
     mp = poly_reduce(mp)
     ret = poly_to_msg(mp)
     # return ret
-    return bytes(ret) # This is the only modification here needed
+    return bytes(ret) # This is the only modification here needed. Converting the list of integers to bytes before returning
