@@ -6,7 +6,7 @@ This repository is a modified version of the [original Crystals-Kyber Python imp
 
 ### Original Repository
 
-The original repository was a toy implementation of Crystals-Kyber in Python, ported from the [official reference](https://github.com/pq-crystals/kyber) . It was intended for educational purposes and is not hardened against timing or other side-channel attacks.
+The original repository was a toy implementation of Crystals-Kyber in Python, ported from the [official reference](https://github.com/asdfjkl/pyky) . It was intended for educational purposes and is not hardened against timing or other side-channel attacks.
 
 ### Modifications in This Repository
 
