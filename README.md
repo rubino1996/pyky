@@ -23,3 +23,29 @@ This repository is not intended for production use, as it is not hardened agains
 1. **Clone this repository**:
   (https://github.com/rubino1996/pyky.git)
 
+## Usage
+1. The test_kyber.py script allows you to encrypt and decrypt a text file.
+
+2. Encrypt and Decrypt a Text File
+
+**This script will:**
+
+- Generate Kyber key pairs.
+- Encrypt a text file (test.txt) in chunks.
+- Save the encrypted message to encrypted_message.bin.
+- Decrypt the encrypted message back to a new file, decrypted_message.txt.
+
+  
+**Steps to Run**
+
+- Place the plaintext file (test.txt) in the root of the repository, or specify the file path as needed.
+- Run the encryption and decryption process: python test_kyber.py
+
+
+**Script Breakdown**
+
+- read_from_file(filename): Reads the plaintext file.
+- write_to_file(data, filename): Writes data to a binary or text file.
+- encrypt_message_in_chunks(pubkey, message, chunk_size, params_k): Encrypts the file in chunks.
+- decrypt_message_chunks(private_key, encrypted_chunks, params_k): Decrypts the chunks and restores the original message.
+- test_kyber_message_encryption_decryption(message): Executes the end-to-end encryption and decryption.
